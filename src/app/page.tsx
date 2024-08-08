@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Image from 'next/image';
 import HomeImage from '../../public/home.webp';
+import LogoImage from '../../public/logo.svg';
 
 export default function Home() {
 	return (
@@ -10,7 +10,13 @@ export default function Home() {
 					<Image
 						src={HomeImage}
 						className='object-cover w-12/12 sm:w-6/12'
-						alt='Fridgefy HomeImage'
+						alt='Medamayakey HomeImage'
+					/>
+					<Image
+						src={LogoImage}
+						alt='Medamayakey Logo'
+						width={450}
+						height={450}
 					/>
 				</div>
 			</main>
