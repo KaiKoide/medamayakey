@@ -10,7 +10,7 @@ import './globals.css';
 const comfortaa = Comfortaa({ weight: ['400', '500'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Fridgefy',
+	title: 'Medamayakey',
 	description: 'wad301-final-project-sunny-side-up',
 };
 
