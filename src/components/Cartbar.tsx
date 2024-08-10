@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 export default function Cartbar() {
 	const { cartItems, setCartItems } = useApp();
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		const fetchData = async () => {
 			const shoppingListItems = await getShoppingListItems();
@@ -32,14 +33,6 @@ export default function Cartbar() {
 		}
 	};
 
-	const getTotalAmount = () => {
-		const totalAmount = cartItems.reduce(
-			(amount, cartItem) => amount + cartItem.price,
-			0,
-		);
-		return totalAmount.toFixed(2);
-	};
-
 	return (
 		<aside className='max-w-72 min-w-72 border-l'>
 			<div className='flex items-center p-4 border-b '>
@@ -48,7 +41,7 @@ export default function Cartbar() {
 			</div>
 			{cartItems && cartItems.length > 0 ? (
 				<>
-					<ScrollArea className='h-80'>
+					<ScrollArea className='h-full'>
 						<ul>
 							{cartItems.map((cartItem: Item) => (
 								<li
@@ -60,10 +53,8 @@ export default function Cartbar() {
 									<div className='flex justify-between items-center w-full gap-4'>
 										<div>
 											<h3 className='mb-1'>{cartItem.name}</h3>
-											<p className='text-slate-700 text-sm'>
-												${cartItem.price}
-											</p>
 										</div>
+										{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 										<button
 											className='w-8'
 											onClick={() => handleDeleteItem(cartItem.id as string)}
@@ -75,18 +66,6 @@ export default function Cartbar() {
 							))}
 						</ul>
 					</ScrollArea>
-					<div className='border-t-2 pb-6 p-6'>
-						<div className='flex justify-between items-center'>
-							<p className='capitalize'>total</p>
-							<p className='font-medium text-xl'>${getTotalAmount()}</p>
-						</div>
-						<Button size={'lg'} className='mb-4 mt-8'>
-							Add item
-						</Button>
-						<Button variant={'outline'} size={'lg'} className='mb-4'>
-							Keep Shopping
-						</Button>
-					</div>
 				</>
 			) : (
 				<div className='h-screen text-center mt-5'>
