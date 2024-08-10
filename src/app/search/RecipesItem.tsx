@@ -4,7 +4,6 @@ import { getRecipes } from '@/actions/db/firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { useApp } from '@/contexts/AppContext';
 import type RecipeData from '@/types/recipe';
-import { FilteredRecipeData } from '@/types/recipe';
 import { SignedIn } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -52,7 +51,7 @@ export default function RecipesItem() {
 					<div className='p-4'>
 						<h2 className='line-clamp-2'>{recipe.title}</h2>
 						<div className='flex gap-2 justify-between mt-4'>
-							<Button asChild className='w-full' size='sm' variant='outline'>
+							<Button asChild className='w-full' variant='outline'>
 								<Link href={`/search/${recipe.id}`}>More</Link>
 							</Button>
 							<SignedIn>
