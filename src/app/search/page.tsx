@@ -1,16 +1,13 @@
 import RecipesFilter from '@/app/search/(filter)/RecipesFilter';
 import Sidebar from '@/components/Sidebar';
 import { RecipeResultProvider } from '@/contexts/recipeContext';
-import { SignedIn } from '@clerk/nextjs';
 import RecipesItem from './RecipesItem';
 
 export default function RecipesSearch() {
 	return (
 		<>
-			<div className='flex'>
-				<SignedIn>
-					<Sidebar />
-				</SignedIn>
+			<div className='flex flex-col lg:flex-row'>
+				<Sidebar />
 				<main className='p-9'>
 					<RecipeResultProvider>
 						<RecipesFilter />
