@@ -5,9 +5,9 @@ import Sidebar from '@/components/Sidebar';
 export default function Myrecipes() {
 	return (
 		<>
-			<div className='flex h-full'>
+			<div className='flex flex-col lg:flex-row h-full w-full'>
 				<Sidebar />
-				<main className='flex-1 p-9 h-full'>
+				<main className='flex-1 p-9 h-full w-full'>
 					<CartRecipes />
 				</main>
 				<Cartbar />
