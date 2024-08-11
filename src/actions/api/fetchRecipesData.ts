@@ -37,7 +37,7 @@ export async function fetchFilteredRecipesData(
 			return cachedData;
 		}
 
-		let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API_KEY}&number=18`;
+		let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API_KEY}&number=20`;
 
 		if (cuisine.length > 0) {
 			url += `&cuisine=${cuisine}`;
@@ -92,7 +92,7 @@ export async function fetchQueryRecipesData(query: string) {
 			return cachedData;
 		}
 		const response = await fetch(
-			`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API_KEY}&titleMatch=${query}&number=18`,
+			`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API_KEY}&titleMatch=${query}&number=20`,
 		);
 		if (!response.ok) {
 			throw new Error('Failed to fetch data');

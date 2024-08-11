@@ -33,7 +33,7 @@ export default function RecipeDetailPage({ params }: RecipeDetailPageProps) {
 
 	return (
 		<>
-			<div className='p-9 px-80'>
+			<div className='p-9 mx-auto w-3/5'>
 				<RecipeDetail recipeDetail={recipeDetail} />
 			</div>
 		</>
