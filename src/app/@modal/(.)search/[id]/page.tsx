@@ -32,22 +32,9 @@ export default function RecipeDetailModal({ params }: RecipeDetailPageProps) {
 		return <Loading />;
 	}
 
-	const ingredientNames = recipeDetail.extendedIngredients.map(
-		(ingredient) => ({ id: ingredient.id, name: ingredient.name }),
-	);
-
 	return (
 		<Modal>
 			<RecipeDetail recipeDetail={recipeDetail} />
-			<h2 className='mb-2 flex items-center'>
-				<Fish />
-				<p className='ml-2'>Ingredients</p>
-			</h2>
-			{ingredientNames.map((ingredientName) => (
-				<span className='text-sm pr-2' key={ingredientName.id}>
-					{ingredientName.name},
-				</span>
-			))}
 		</Modal>
 	);
 }

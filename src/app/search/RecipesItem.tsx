@@ -4,7 +4,6 @@ import { getRecipes } from '@/actions/db/firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { useApp } from '@/contexts/AppContext';
 import type RecipeData from '@/types/recipe';
-import { FilteredRecipeData } from '@/types/recipe';
 import { SignedIn } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -35,8 +34,15 @@ export default function RecipesItem() {
 		recipesItems();
 	}, []);
 
+	fetchedRecipesData.map((recipe) => {
+		if (!recipe.image) {
+			recipe.image =
+				'https://placehold.jp/c1c1c2/ffffff/500x335.png?text=Image%20Not%20Found';
+		}
+	});
+
 	return (
-		<div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+		<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
 			{fetchedRecipesData.map((recipe: RecipeData) => (
 				<div className='rounded-md w-full bg-white shadow-md' key={recipe.id}>
 					<Link href={`/search/${recipe.id}`}>
@@ -52,7 +58,7 @@ export default function RecipesItem() {
 					<div className='p-4'>
 						<h2 className='line-clamp-2'>{recipe.title}</h2>
 						<div className='flex gap-2 justify-between mt-4'>
-							<Button asChild className='w-full' size='sm' variant='outline'>
+							<Button asChild className='w-full' variant='outline'>
 								<Link href={`/search/${recipe.id}`}>More</Link>
 							</Button>
 							<SignedIn>

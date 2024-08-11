@@ -36,7 +36,7 @@ export default function RecipesFilterInput() {
 
 	return (
 		<>
-			<div className='flex justify-end gap-x-6 mb-6'>
+			<div className='flex flex-col lg:flex-row gap-3 items-center justify-end gap-x-6 mb-6'>
 				<Input
 					placeholder='Search item'
 					icon={<Search className='stroke-slate-400' />}

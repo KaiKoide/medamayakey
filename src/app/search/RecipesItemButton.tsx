@@ -44,9 +44,5 @@ export function RecipesItemButton({ recipe }: RecipesItemButtonProps) {
 		);
 	}
 
-	return (
-		<Button className='w-full' size='sm' onClick={handleClick}>
-			Add
-		</Button>
-	);
+	return <Button onClick={handleClick}>Save</Button>;
 }

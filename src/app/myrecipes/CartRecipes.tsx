@@ -11,6 +11,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
 import { useApp } from '@/contexts/AppContext';
 import type NewRrcipeData from '@/types/newRrcipeData';
 import { Fish, Trash2 } from 'lucide-react';
@@ -108,9 +109,7 @@ export default function CartRecipes() {
 								</AccordionTrigger>
 							</div>
 							<AccordionContent>
-								{/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
-								<p dangerouslySetInnerHTML={{ __html: recipe.summary }} />
-								<div className='flex items-center mt-6 mb-2'>
+								<div className='flex items-center mt-3 mb-2'>
 									<Fish />
 									<h3 className='ml-2'>Ingredients</h3>
 								</div>
@@ -121,6 +120,9 @@ export default function CartRecipes() {
 										</span>
 									))}
 								</p>
+								<Button asChild className='mt-5' variant='outline'>
+									<Link href={`/search/${recipe.id}`}>More</Link>
+								</Button>
 							</AccordionContent>
 						</AccordionItem>
 					))}
