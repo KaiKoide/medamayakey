@@ -15,6 +15,11 @@ export default function RecipeDetail({ recipeDetail }: RecipeDetailProps) {
 		return <Loading />;
 	}
 
+	if (!recipeDetail.image) {
+		recipeDetail.image =
+			'https://placehold.jp/c1c1c2/ffffff/630x420.png?text=Image%20Not%20Found';
+	}
+
 	return (
 		<div className='flex flex-col items-center'>
 			<h1 className='text-3xl mb-8 font-bold	'>{recipeDetail.title}</h1>

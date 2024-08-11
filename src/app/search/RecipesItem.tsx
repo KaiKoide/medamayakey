@@ -34,6 +34,13 @@ export default function RecipesItem() {
 		recipesItems();
 	}, []);
 
+	fetchedRecipesData.map((recipe) => {
+		if (!recipe.image) {
+			recipe.image =
+				'https://placehold.jp/c1c1c2/ffffff/500x335.png?text=Image%20Not%20Found';
+		}
+	});
+
 	return (
 		<div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
 			{fetchedRecipesData.map((recipe: RecipeData) => (
