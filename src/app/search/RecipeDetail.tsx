@@ -1,7 +1,7 @@
 'use client';
 import Loading from '@/components/Loading';
 import type RecipeData from '@/types/recipe';
-import type { Step } from '@/types/recipe';
+import type { AnalyzedInstruction, Step } from '@/types/recipe';
 import { ChefHat, CookingPot, Fish } from 'lucide-react';
 import Image from 'next/image';
 import { RecipesItemButton } from './RecipesItemButton';
@@ -18,6 +18,16 @@ export default function RecipeDetail({ recipeDetail }: RecipeDetailProps) {
 	if (!recipeDetail.image) {
 		recipeDetail.image =
 			'https://placehold.jp/c1c1c2/ffffff/630x420.png?text=Image%20Not%20Found';
+	}
+
+	let analyzedInstructions: AnalyzedInstruction[];
+
+	if (Array.isArray(recipeDetail.analyzedInstructions)) {
+		analyzedInstructions = recipeDetail.analyzedInstructions;
+	} else if (recipeDetail.analyzedInstructions) {
+		analyzedInstructions = [recipeDetail.analyzedInstructions];
+	} else {
+		analyzedInstructions = [];
 	}
 
 	return (
@@ -73,13 +83,17 @@ export default function RecipeDetail({ recipeDetail }: RecipeDetailProps) {
 						<ChefHat />
 						<h2 className='ml-2 text-xl font-extrabold'>Recipe Steps</h2>
 					</div>
-					<ol className='list-decimal'>
-						{recipeDetail.analyzedInstructions[0].steps.map((step: Step) => (
-							<li key={step.number} className='mb-5 text-lg'>
-								{step.step}
-							</li>
-						))}
-					</ol>
+					{analyzedInstructions.length > 0 ? (
+						<ol className='list-decimal'>
+							{analyzedInstructions[0].steps.map((step: Step) => (
+								<li key={step.number} className='mb-5 text-lg'>
+									{step.step}
+								</li>
+							))}
+						</ol>
+					) : (
+						<p>No steps available for this recipe.</p>
+					)}
 				</div>
 			</div>
 		</div>
