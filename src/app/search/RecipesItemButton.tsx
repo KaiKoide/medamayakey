@@ -15,7 +15,7 @@ export function RecipesItemButton({ recipe }: RecipesItemButtonProps) {
 
 	const handleClick = async () => {
 		const recipeToAdd = {
-			id: recipe.id,
+			id: String(recipe.id),
 			title: recipe.title,
 			image: recipe.image,
 			summary: recipe.summary,
