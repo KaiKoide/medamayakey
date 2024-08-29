@@ -7,7 +7,6 @@ export default function RecipesSearch() {
 	return (
 		<>
 			<div className='flex flex-col lg:flex-row'>
-				<Sidebar />
 				<main className='p-9'>
 					<RecipeResultProvider>
 						<RecipesFilter />
