@@ -1,5 +1,4 @@
 import RecipesFilter from '@/app/search/(filter)/RecipesFilter';
-import Sidebar from '@/components/Sidebar';
 import { RecipeResultProvider } from '@/contexts/recipeContext';
 import RecipesItem from './RecipesItem';
 
